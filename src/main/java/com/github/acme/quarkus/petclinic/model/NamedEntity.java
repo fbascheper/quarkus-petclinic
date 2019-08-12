@@ -15,6 +15,8 @@
  */
 package com.github.acme.quarkus.petclinic.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
@@ -27,22 +29,12 @@ import javax.persistence.MappedSuperclass;
  * @author Juergen Hoeller
  */
 @MappedSuperclass
-public class NamedEntity extends BaseEntity {
+public class NamedEntity extends PanacheEntity {
 
     @Column(name = "name")
-    private String name;
+    public String name;
 
     public String getName() {
         return this.name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return this.getName();
-    }
-
 }

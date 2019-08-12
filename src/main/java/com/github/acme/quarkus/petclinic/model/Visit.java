@@ -15,12 +15,13 @@
  */
 package com.github.acme.quarkus.petclinic.model;
 
-import java.time.LocalDate;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 
 /**
  * Simple JavaBean domain object representing a visit.
@@ -30,17 +31,17 @@ import javax.validation.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "visits")
-public class Visit extends BaseEntity {
+public class Visit extends PanacheEntity {
 
     @Column(name = "visit_date")
-    private LocalDate date;
+    public LocalDate date;
 
     @NotEmpty
     @Column(name = "description")
-    private String description;
+    public String description;
 
     @Column(name = "pet_id")
-    private Integer petId;
+    public Long petId;
 
     /**
      * Creates a new instance of Visit for the current date
@@ -52,25 +53,4 @@ public class Visit extends BaseEntity {
     public LocalDate getDate() {
         return this.date;
     }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getPetId() {
-        return this.petId;
-    }
-
-    public void setPetId(Integer petId) {
-        this.petId = petId;
-    }
-
 }

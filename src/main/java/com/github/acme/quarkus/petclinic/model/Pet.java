@@ -31,18 +31,18 @@ import java.util.*;
 public class Pet extends NamedEntity {
 
     @Column(name = "birth_date")
-    private LocalDate birthDate;
+    public LocalDate birthDate;
 
     @ManyToOne
     @JoinColumn(name = "type_id")
-    private PetType type;
+    public PetType type;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    private Owner owner;
+    public Owner owner;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "petId", fetch = FetchType.EAGER)
-    private Set<Visit> visits = new LinkedHashSet<>();
+    public Set<Visit> visits = new LinkedHashSet<>();
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
@@ -68,26 +68,19 @@ public class Pet extends NamedEntity {
         this.owner = owner;
     }
 
-    protected Set<Visit> getVisitsInternal() {
-        if (this.visits == null) {
-            this.visits = new HashSet<>();
-        }
-        return this.visits;
-    }
-
     protected void setVisitsInternal(Set<Visit> visits) {
         this.visits = visits;
     }
 
     public List<Visit> getVisits() {
-        List<Visit> sortedVisits = new ArrayList<>(getVisitsInternal());
+        List<Visit> sortedVisits = new ArrayList<>(visits);
         sortedVisits.sort(Comparator.comparing(Visit::getDate));
         return Collections.unmodifiableList(sortedVisits);
     }
 
     public void addVisit(Visit visit) {
-        getVisitsInternal().add(visit);
-        visit.setPetId(this.getId());
+        this.visits.add(visit);
+        visit.petId = this.id;
     }
 
 }
