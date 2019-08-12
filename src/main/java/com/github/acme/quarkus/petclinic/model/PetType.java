@@ -13,12 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package com.github.acme.quarkus.petclinic.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
-import org.springframework.samples.petclinic.model.NamedEntity;
 
 /**
  * @author Juergen Hoeller
