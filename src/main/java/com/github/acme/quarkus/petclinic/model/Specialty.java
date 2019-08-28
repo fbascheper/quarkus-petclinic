@@ -15,8 +15,12 @@
  */
 package com.github.acme.quarkus.petclinic.model;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -27,5 +31,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "specialties")
 public class Specialty extends NamedEntity {
+
+    @ManyToMany(mappedBy = "specialties")
+    @JsonbTransient
+    public List<Vet> vets = new ArrayList<>();
 
 }

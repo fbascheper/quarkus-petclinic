@@ -57,7 +57,7 @@ public class Owner extends Person {
         if (pet.id == null) {
             this.pets.add(pet);
         }
-        pet.setOwner(this);
+        pet.owner = this;
     }
 
     /**
@@ -66,7 +66,7 @@ public class Owner extends Person {
      * @param name to test
      * @return true if pet name is already in use
      */
-    public Pet getPet(String name) {
+    public Pet getPetWithName(String name) {
         return pets.stream().filter(pet -> name.toLowerCase().equals(pet.name.toLowerCase())).findFirst().orElse(null);
     }
 

@@ -41,36 +41,8 @@ public class Pet extends NamedEntity {
     @JoinColumn(name = "owner_id")
     public Owner owner;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "petId", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
     public Set<Visit> visits = new LinkedHashSet<>();
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public LocalDate getBirthDate() {
-        return this.birthDate;
-    }
-
-    public PetType getType() {
-        return this.type;
-    }
-
-    public void setType(PetType type) {
-        this.type = type;
-    }
-
-    public Owner getOwner() {
-        return this.owner;
-    }
-
-    protected void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    protected void setVisitsInternal(Set<Visit> visits) {
-        this.visits = visits;
-    }
 
     public List<Visit> getVisits() {
         List<Visit> sortedVisits = new ArrayList<>(visits);
@@ -80,7 +52,7 @@ public class Pet extends NamedEntity {
 
     public void addVisit(Visit visit) {
         this.visits.add(visit);
-        visit.petId = this.id;
+        visit.pet = this;
     }
 
 }

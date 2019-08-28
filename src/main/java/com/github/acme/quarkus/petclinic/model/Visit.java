@@ -17,9 +17,7 @@ package com.github.acme.quarkus.petclinic.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
@@ -40,8 +38,9 @@ public class Visit extends PanacheEntity {
     @Column(name = "description")
     public String description;
 
-    @Column(name = "pet_id")
-    public Long petId;
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
+    public Pet pet;
 
     /**
      * Creates a new instance of Visit for the current date
@@ -51,6 +50,6 @@ public class Visit extends PanacheEntity {
     }
 
     public LocalDate getDate() {
-        return this.date;
+        return date;
     }
 }
