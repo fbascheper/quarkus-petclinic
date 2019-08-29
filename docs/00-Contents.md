@@ -232,6 +232,7 @@ unified configuration file `src/main/resources/application.properties`
 %dev.quarkus.hibernate-orm.sql-load-script=db/hsqldb/data-and-schema.sql
 
 %prod.quarkus.hibernate-orm.database.generation=none
+%prod.quarkus.datasource.driver=org.mariadb.jdbc.Driver
 ```
 
 This wil configure Hibernate to drop and create an empty database and run a script upon startup.
