@@ -1,5 +1,5 @@
-## Erreichen der Schallgeschwindigkeit mit Quarkus
-> Der Heilige Gral der Entwicklerproduktivität?
+## Achieving supersonic development speed with Quarkus
+> The holy grail of Developer productivity?
 
 ***
 
