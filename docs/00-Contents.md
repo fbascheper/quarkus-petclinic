@@ -28,6 +28,7 @@
 7. [Going native with Quarkus](#going-native-with-quarkus)
 8. [Wrap up](#wrap-up)
 
+*** 
 
 ### What is Quarkus?
 
